@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - GroundShadow
+  - PlayerShadow
+  - Switch
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - Shadow
   - 
   - 
   - 
@@ -41,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 4029626839
+    locked: 0
+  - name: MidGround
+    uniqueID: 1189421237
     locked: 0
   - name: Default
     uniqueID: 0
