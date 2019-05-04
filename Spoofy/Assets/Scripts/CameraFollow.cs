@@ -10,25 +10,29 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject PlayerShadow;
     [SerializeField] GameObject Switch;
+    [SerializeField] bool Pink;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         PlayerShadow = GameObject.FindGameObjectWithTag("PlayerShadow");
         Switch = GameObject.FindGameObjectWithTag("Switch");
+        Pink = Switch.GetComponent<SwitchKey>().isPink;
     }
 
     private void LateUpdate()
     {
-        if(Switch.GetComponent<SwitchKey>().isPink == true)
+        if(Pink)
         {
+            Debug.Log("Following player");
             Target = Player.transform;
             Vector3 DesiredPosition = Target.position + offset;
             Vector3 SmoothedPosition = Vector3.Lerp(transform.position, DesiredPosition, SmoothSpeed*Time.deltaTime);
             transform.position = SmoothedPosition;
         }
-        else if(Switch.GetComponent<SwitchKey>().isPink == false)
+        else if(!Pink)
         {
+            Debug.Log("Following shadow");
             Target = PlayerShadow.transform;
             Vector3 DesiredPosition = Target.position + offset;
             Vector3 SmoothedPosition = Vector3.Lerp(transform.position, DesiredPosition, SmoothSpeed * Time.deltaTime);

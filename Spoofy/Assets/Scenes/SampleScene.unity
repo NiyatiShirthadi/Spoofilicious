@@ -448,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 3
   JumpSpeed: 0
-  isGrounded: 0
+  PlayerisGrounded: 0
 --- !u!1 &374715719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,15 +1303,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1488493697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1437ad0069d3f054fa0d1d12c386c4f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 27ed7679aa22fab48b5bb96ffa0ab170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  SmoothSpeed: 1.75
-  offset: {x: 0, y: 0, z: -10}
-  Player: {fileID: 0}
-  PlayerShadow: {fileID: 0}
-  Switch: {fileID: 0}
+  targets:
+  - {fileID: 1669379421}
+  - {fileID: 1987095127}
+  Offset: {x: 0, y: 1, z: -10}
 --- !u!81 &1488493699
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1410,7 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 3
   JumpSpeed: 5
-  isGrounded: 0
+  PlayerisGrounded: 0
 --- !u!61 &1669379418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1993,8 +1991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac6f3522dd12264992e64aedea56128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 3
-  JumpSpeed: 5
+  Shadowmovespeed: 3
+  ShadowJumpSpeed: 5
   isShadowGrounded: 0
 --- !u!61 &1987095124
 BoxCollider2D:

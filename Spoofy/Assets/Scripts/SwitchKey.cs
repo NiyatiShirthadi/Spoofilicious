@@ -6,9 +6,10 @@ public class SwitchKey : MonoBehaviour
 {
     [SerializeField] GameObject Player;
     [SerializeField] GameObject PlayerShadow;
+   
     public Vector3 Offset1;
     public Vector3 Offset2;
-    public bool isPink = false;
+    public bool isPink;
 
     void Start()
     {
@@ -16,39 +17,36 @@ public class SwitchKey : MonoBehaviour
         PlayerShadow = GameObject.FindGameObjectWithTag("PlayerShadow");
 
         Player.GetComponent<PlayerMovement>().enabled = true;
-        Player.GetComponent<BoxCollider2D>().enabled = true;
         isPink = true;
 
         PlayerShadow.GetComponent<ShadowMovement>().enabled = false;
-        PlayerShadow.GetComponent<BoxCollider2D>().enabled = false;
+        
     }
 
-    private void ShadowFollow()
+    private void ShadowStop()
     {
+        Debug.Log("Shadow should stop");
         //PlayerOn
         Player.GetComponent<PlayerMovement>().enabled = true;
-        Player.GetComponent<BoxCollider2D>().enabled = true;
-
-
-        PlayerShadow.transform.position = Player.transform.position + Offset1;
+        isPink = false;
 
         //PlayerShadowOff
         PlayerShadow.GetComponent<ShadowMovement>().enabled = false;
-        PlayerShadow.GetComponent<BoxCollider2D>().enabled = false;
-    }
-
-    private void PlayerFollow()
-    {
-        //PlayerShadowOn
-        PlayerShadow.GetComponent<ShadowMovement>().enabled = true;
-        PlayerShadow.GetComponent<BoxCollider2D>().enabled = true;
-
 
         Player.transform.position = PlayerShadow.transform.position + Offset2;
+    }
+
+    private void PlayerStop()
+    {
+        Debug.Log("Player should stop");
+        //PlayerShadowOn
+        PlayerShadow.GetComponent<ShadowMovement>().enabled = true;
+        isPink = true;
 
         //PlayerOff
         Player.GetComponent<PlayerMovement>().enabled = false;
-        Player.GetComponent<BoxCollider2D>().enabled = false;
+
+        PlayerShadow.transform.position = Player.transform.position + Offset1;
     }
 
     void Update()
@@ -57,13 +55,13 @@ public class SwitchKey : MonoBehaviour
         {
             if (isPink)
             {
-                ShadowFollow();
-                isPink = false;
+                ShadowStop();
+                Debug.Log("Shadow should stop");
             }
             else
             {
-                isPink = true;
-                PlayerFollow();
+                Debug.Log("Player should stop");
+                PlayerStop();
             }
         }
         

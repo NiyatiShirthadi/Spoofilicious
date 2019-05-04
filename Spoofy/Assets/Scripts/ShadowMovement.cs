@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShadowMovement : MonoBehaviour
 {
 
-    public float movespeed;
-    public float JumpSpeed;
+    public float Shadowmovespeed;
+    public float ShadowJumpSpeed;
     private float x;
     public bool isShadowGrounded;
 
@@ -19,16 +19,16 @@ public class ShadowMovement : MonoBehaviour
     void Update()
     {
         x = Input.GetAxis("Horizontal");
-        Movement(x);
+        ShMovement(x);
                     
     }
 
-    private void Movement(float x)
+    private void ShMovement(float x)
     {
         Jump();
         Vector3 movement = new Vector3(x, 0f, 0f);
-        Debug.Log("movement" + movement);
-        transform.position += movement * Time.deltaTime * movespeed;
+        Debug.Log("Shadow movement" + movement);
+        transform.position += movement * Time.deltaTime * Shadowmovespeed;
     }
 
     private void Jump()
@@ -36,7 +36,7 @@ public class ShadowMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.UpArrow) && isShadowGrounded)
         {
             Debug.Log("Jump Shadow");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, JumpSpeed), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, ShadowJumpSpeed), ForceMode2D.Impulse);
         }
     }
 
